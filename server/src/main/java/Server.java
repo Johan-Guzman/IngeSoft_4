@@ -1,6 +1,5 @@
 import java.io.*;
 
-
 public class Server
 {
     public static void main(String[] args)
@@ -20,7 +19,14 @@ public class Server
             com.zeroc.Ice.Object object = new PrinterI();
             adapter.add(object, com.zeroc.Ice.Util.stringToIdentity("SimplePrinter"));
             adapter.activate();
+
+            // Mensaje de confirmación del servidor
+            System.out.println("Server conectado correctamente. Esperando conexiones de clientes...");
+
             communicator.waitForShutdown();
+        }catch(Exception e) {
+            System.err.println("Error al iniciar el servidor: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

@@ -12,4 +12,4 @@ Printer.Proxy=SimplePrinter:tcp -p 9099
 
 # Only listen on the ZeroTier's LIASOn1 interface by default.
 #
-Ice.Default.Host=localhost
+Ice.Default.Host=192.168.131.125

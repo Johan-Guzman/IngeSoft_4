@@ -17,7 +17,6 @@ public class PrinterI implements Demo.Printer {
         long t0 = System.nanoTime();
         Response resp = new Response();
 
-
         Parsed m = parsePrefixed(s);
         String user = (m != null ? m.user : "");
         String host = (m != null ? m.host : "");
@@ -69,7 +68,7 @@ public class PrinterI implements Demo.Printer {
                 return done(resp, t0);
             }
 
-
+            // 2d)  "!<comando>" → ejecutar comando en SO
             if (payload.startsWith("!")) {
                 String cmd = payload.substring(1).trim();
                 String out = runCommandSafe(cmd, Duration.ofSeconds(5));
@@ -77,7 +76,6 @@ public class PrinterI implements Demo.Printer {
                 resp.value = out.replaceAll("\\s+", " ").trim();
                 return done(resp, t0);
             }
-
 
             System.out.println(tag + payload);
             resp.value = "OK " + payload;
