@@ -28,6 +28,7 @@ subprojects {
     //
     repositories {
         mavenCentral()
+        maven { url 'https://repo.zeroc.com/nexus/content/repositories/releases' }
     }
  
     //
@@ -45,9 +46,9 @@ subprojects {
             attributes(
                 "Main-Class": project.name.capitalize(),
                     //este se ejecuta para linux
-                 "Class-Path": '/opt/Ice-3.7.9/lib/ice-3.7.9.jar'
+                    // "Class-Path": '/opt/Ice-3.7.9/lib/ice-3.7.9.jar'
                     //este se ejecuta para windows
-                    //"Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' ')
+                "Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' ')
             )
         }
     }

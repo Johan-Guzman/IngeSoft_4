@@ -7,6 +7,17 @@
  * in the user manual at https://docs.gradle.org/6.6/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'printer'
+/*rootProject.name = 'printer'
 include 'client'
-include 'server'
+include 'server'*/
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://repo.zeroc.com/nexus/content/repositories/releases' }
+    }
+}
+
+rootProject.name = 'helloworld-ciclo-kbd-AdriJhoannyMartinezMurillo1-JohanStivenGuzman2'
+include 'client', 'server'
