@@ -3,8 +3,6 @@
 //
 plugins {
     id 'com.zeroc.gradle.ice-builder.slice' version '1.4.7' apply false
-    //id 'com.zeroc.gradle.ice-builder.slice' version '1.4.9' apply false
-
 }
   
 subprojects {
@@ -46,9 +44,9 @@ subprojects {
             attributes(
                 "Main-Class": project.name.capitalize(),
                     //este se ejecuta para linux
-                    // "Class-Path": '/opt/Ice-3.7.9/lib/ice-3.7.9.jar'
+                "Class-Path": '/opt/Ice-3.7.9/lib/ice-3.7.9.jar'
                     //este se ejecuta para windows
-                "Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' ')
+                //"Class-Path": configurations.runtimeClasspath.resolve().collect { it.toURI() }.join(' ')
             )
         }
     }

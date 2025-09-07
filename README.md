@@ -30,3 +30,28 @@ Con JDK 11 y Gradle 6.9.4 configurados, compila normalmente:
 ```powershell
 .\gradlew clean build
 ```
+
+Para conectarse al server:
+
+```powershell
+ssh swarch@192.168.131.119
+```
+
+Para conectarse a los clientes:
+
+```powershell
+ssh swarch@192.168.131.124
+ssh swarch@192.168.131.125
+```
+
+Para ejecutar el jar del client:
+
+```powershell
+java -jar client/build/libs/client.jar                                                                                                         
+```
+
+Para ejecutar el jar del server:
+
+```powershell
+java -jar server/build/libs/server.jar
+```

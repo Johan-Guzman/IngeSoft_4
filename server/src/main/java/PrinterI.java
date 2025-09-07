@@ -3,6 +3,7 @@ import com.zeroc.Ice.Current;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -36,7 +37,7 @@ public class PrinterI implements Demo.Printer {
             // 2a) entero positivo -> imprimir fibonacci(n), retornar factores primos
             if (isPositiveInteger(payload)) {
                 long n = Long.parseLong(payload);
-                List<Long> fib = fibonacci(n);
+                List<BigInteger> fib = fibonacci(n);
                 System.out.println(tag + "fibonacci(" + n + "): " + join(fib, ", "));
                 List<Long> fac = primeFactors(n);
                 resp.value = n + " = " + join(fac, "*");
@@ -103,10 +104,16 @@ public class PrinterI implements Demo.Printer {
         try { return Long.parseLong(s.trim()) > 0; } catch (Exception e){ return false; }
     }
 
-    private List<Long> fibonacci(long n){
-        List<Long> r = new ArrayList<>();
-        long a=0, b=1;
-        for (int i=0;i<n;i++){ r.add(a); long c=a+b; a=b; b=c; }
+    private List<BigInteger> fibonacci(long n) {
+        List<BigInteger> r = new ArrayList<>();
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        for (int i = 0; i < n; i++) {
+            r.add(a);
+            BigInteger c = a.add(b);
+            a = b;
+            b = c;
+        }
         return r;
     }
 
